@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:50:46 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:37 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/14 00:59:50 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
 void	bzero(void *s, size_t n)
 {
