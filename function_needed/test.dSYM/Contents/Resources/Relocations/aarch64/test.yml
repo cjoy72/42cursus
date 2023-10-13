@@ -1,7 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/cjoy720/Documents/Github/42cursus/function_needed/test'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E60, symSize: 0xD8 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003E60, symSize: 0xD8 }
-...
