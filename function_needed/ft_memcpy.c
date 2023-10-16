@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:07:46 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/14 12:30:46 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:07:24 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*memcpy(void *dest, const void *src, size_t n)
 	char	*d;
 	char	*s;
 
-	d = (char *)dest;
-	s = (char *)src;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	i = 0;
 	while (i < n)
 	{

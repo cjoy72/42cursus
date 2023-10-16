@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:58:29 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/16 16:37:31 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/16 17:05:39 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
 void	*memmove(void *dest, const void *src, size_t n)
 {
