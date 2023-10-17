@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:15:16 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 10:31:01 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/10/17 10:32:08 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/10/17 11:45:09 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char	*strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t		i;
 
 	i = 0;
-	while ((unsigned char)s[i] != '\0')
+	while ((unsigned char)s1[i] == (unsigned char)s2[i]
+		&& i < n && s1[i] != '\0' && s2[i] != '\0')
 		i++;
-	i--;
-	while ((unsigned char)s[i] != (unsigned char)c && i >= 0)
-		i--;
-	if (i == -1)
-		return (NULL);
+	if (i == n)
+		return (0);
 	else
-		return ((char *)(s + i));
+		return ((unsigned int)s1[i] - (unsigned int)s2[i]);
 }
