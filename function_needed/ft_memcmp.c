@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:18:20 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 21:28:06 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/17 21:40:14 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	if (i == n)
 		return (0);
 	else
-		return (str1[i] - str2[i]);
+		return ((int)(str1[i] - str2[i]));
 }
