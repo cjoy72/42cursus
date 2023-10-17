@@ -1,36 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 09:34:32 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 09:40:55 by cbaroi           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stddef.h>
 #include <stdio.h>
+#include <string.h>
 
-int	toupper(int c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+const char *custom_strnstr(const char *haystack, const char *needle, size_t len) {
+    size_t needle_len = strlen(needle);
+
+    if (needle_len == 0) {
+        return haystack;  // Empty needle is always found at the start.
+    }
+
+    for (size_t i = 0; haystack[i] != '\0' && i < len; i++) {
+        if (strncmp(haystack + i, needle, needle_len) == 0) {
+            return haystack + i;  // Found the substring.
+        }
+    }
+
+    return NULL;  // Substring not found.
 }
 
-int main()
-{
-    char    c;
-    c = 'g';
-    printf("given %c\n", c);
-    printf("return %c\n", toupper(c));
-    c = 'A';
-    printf("given %c\n", c);
-    printf("return %c\n", toupper(c));
-    c = ']';
-    printf("given %c\n", c);
-    printf("return %c\n", toupper(c));
+int main() {
+    const char *haystack = "Hello, world!";
+    const char *needle = "world";
+    size_t haystack_len = strlen(haystack);
+
+    const char *result = custom_strnstr(haystack, needle, haystack_len);
+
+    if (result) {
+        printf("Found: %s\n", result);
+    } else {
+        printf("Not found\n");
+    }
+
+    return 0;
 }
