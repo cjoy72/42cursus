@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 22:38:19 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/16 17:49:50 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/17 09:57:26 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
-
 	i = 0;
 	if (size == 0)
 		return (src_len);
