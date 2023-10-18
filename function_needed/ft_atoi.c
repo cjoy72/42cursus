@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:37:13 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/18 13:19:41 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/18 13:28:13 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char *c)
+int	ft_isspace(char c)
 {
 	if (c == 32 || (c >= '\t' && c <= '\r'))
 		return (1);
@@ -34,6 +34,8 @@ int	ft_atoi(const char *nptr)
 		sign = -1;
 		nptr++;
 	}
+	else if (*nptr == '+')
+		nptr++;
 	n = 0;
 	while (*nptr >= '0' && *nptr <= '9')
 	{
