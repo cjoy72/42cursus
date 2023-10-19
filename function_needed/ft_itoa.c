@@ -6,9 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:22:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/19 23:17:54 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/19 23:28:48 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 int	ft_intlen(int a)
 {
@@ -22,9 +24,10 @@ int	ft_intlen(int a)
 	}
 	return (i);
 }
-char	*ft_zero()
+
+char	*ft_zero(void)
 {
-	char *str;
+	char	*str;
 
 	str = (char *)malloc(sizeof(char) * 2);
 	if (str == NULL)
@@ -36,7 +39,8 @@ char	*ft_zero()
 		return (str);
 	}
 }
-void	ft_putintchar(char *str,int num, int length)
+
+void	ft_putintchar(char *str, int num, int length)
 {
 	str[length] = '\0';
 	length--;
@@ -47,13 +51,14 @@ void	ft_putintchar(char *str,int num, int length)
 		length--;
 	}
 }
+
 char	*ft_allocmem(int length, int is_negative)
 {
 	char	*str;
 
 	if (is_negative)
 	{
-		length = length + 2; //Considaring NULL and NEGative
+		length = length + 2;
 		str = (char *)malloc(sizeof(char) * length);
 		if (str == NULL)
 			return (NULL);
@@ -68,6 +73,7 @@ char	*ft_allocmem(int length, int is_negative)
 	}
 	return (str);
 }
+
 char	*ft_itoa(int a)
 {
 	int		is_negative;
@@ -83,7 +89,6 @@ char	*ft_itoa(int a)
 		a = -a;
 	}
 	length = ft_intlen(a);
-	/*Length is not the length I need to use for the function ft_putintchar*/
 	str = ft_allocmem(length, is_negative);
 	if (str == NULL)
 		return (NULL);
