@@ -1,195 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 16:02:33 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/22 14:31:55 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/10/22 16:42:24 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/10/22 20:33:25 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	count_words(const char *s, char c)
+#include <stddef.h>
+
+char	**ft_split(const char *s, char c)
 {
-	int	i;
-	int	words;
-
-	words = 0;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			words++;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-		}
-	}
-	return (words);
-}
-
-int	count_largestword(char const *s, char c)
-{
-	int	i;
-	int	j;
-	int	largest_word;
-
-	i = 0;
-	j = 0;
-	largest_word = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			while (s[i] != c && s[i] != '\0')
-			{
-				i++;
-				j++;
-				if (s[i] != c && s[i] != '\0')
-					continue ;
-				else if (largest_word < j)
-					largest_word = j;
-			}
-		}
-	}
-	return (largest_word);
-}
-
-void	putstrptrptr(char **str, char *s, char c)
-{
-	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = 0;
-	while ((s[i] == c) || (s[i] != '\0'))
-	{
-		k = 0;
-		i++;
-		while ((s[i] != c) || (s[i] != '\0'))
-		{
-			str[j][k] = s[i];
-			if (s[i + 1] == c && s[i] != '\0')
-				j++;
-			i++;
-			k++;
-		}
-	}
-	if (i != 0)
-		str[j][k] = '\0';
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**str;
-	int		largest_word;
-	int		words;
+	int		n_words;
 	int		i;
-	int		j;
+	char	**str_array;
 
-	words = count_words(s, c);
-	largest_word = count_largestword(s, c);
-	str = (char **)malloc(sizeof(char *) * (words + 1));
-	if (str == NULL)
-		return (NULL);
+	if (s == NULL || *s == '\0')
+		return (s);
 	i = 0;
-	while (i < words)
+	n_words = 0;
+	if (s[0] != c && s[0] != '\0')
+		n_words++;
+	while (s[i + 1] != '\0')
 	{
-		str[i] = (char *)malloc(sizeof(char) * (largest_word + 1));
-		if (str[i] == NULL)
-			return (NULL);
-		i++;
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+		{
+			n_words++;
+			i++;
+		}
 	}
-	putstrptrptr(str, s, c);
-	return (str);
+	str_array = malloc(sizeof(char *) * (n_words + 1));
+	if (str_array == NULL)
+		return (NULL);
+	str_array[n_words] = NULL;
+	return (fill_matrix(n_words, s, c, str_array));
 }
-/*
-void putstrptrptr(char **str, char *s, char c) {
-    int i = 0;
-    int j = 0;
-    int k = 0;
 
-    while (s[i] != '\0') {
-        if (s[i] != c) {
-            str[j][k] = s[i];
-            k++;
-        } else if (k > 0) {
-            str[j][k] = '\0';
-            j++;
-            k = 0;
-        }
-        i++;
-    }
-    if (k > 0) {
-        str[j][k] = '\0';
-    }
+static char	**fill_matrix(int n_words, const char *s, char c, char **str_array)
+{
+	int	j;
+	int	i;
+	int	len;
+
+	j = -1;
+	i = 0;
+	len = 0;
+	while (++j < n_words)
+	{
+		while (*s == c)
+			s++;
+		while (s[len] != c && s[len] != '\0')
+			len++;
+		str_array[j] = malloc(sizeof(char) * (len + 1));
+		if (str_array[j] == NULL)
+			return (free_everything(str_array, j));
+		str_array[j][len++] = '\0';
+		i = len - 1;
+		while (--len > 0)
+			str_array[j][len -1] = s[len - 1];
+		s = s + i;
+	}
+	return (str_array);
 }
-*/
-/*
-int count_largestword(const char *s, char c) {
-    int largest_word = 0;
-    int current_word_length = 0;
 
-    while (*s) {
-        while (*s == c)
-            s++;
-        if (*s) {
-            current_word_length = 0;
-            while (*s && *s != c) {
-                current_word_length++;
-                s++;
-            }
-            if (current_word_length > largest_word)
-                largest_word = current_word_length;
-        }
-    }
-
-    return largest_word;
+static char	**free_everything(char **str_array, int j)
+{
+	while (--j >= 0)
+		free(str_array[j]);
+	free(str_array);
+	return (NULL);
 }
-*/
-/*
-int count_words(const char *s, char c) {
-    int words = 0;
-
-    while (*s) {
-        while (*s == c)
-            s++;
-        if (*s) {
-            words++;
-            while (*s && *s != c)
-                s++;
-        }
-    }
-
-    return words;
-}
-*/
-/*
-char **ft_split(char const *s, char c) {
-    int words = count_words(s, c);
-    int largest_word = count_largestword(s, c);
-    char **str = (char **)malloc(sizeof(char *) * (words + 1)); // Allocate an array of char pointers
-
-    if (str == NULL)
-        return (NULL);
-
-    for (int i = 0; i < words; i++) {
-        str[i] = (char *)malloc(sizeof(char) * (largest_word + 1)); // Allocate memory for each word
-        if (str[i] == NULL) {
-            // Handle memory allocation failure here
-            // You may need to free previously allocated memory
-            return (NULL);
-        }
-    }
-
-    putstrptrptr(str, s, c);
-
-    return str;
-}
-*/
