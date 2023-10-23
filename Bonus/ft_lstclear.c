@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:48:28 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/23 18:03:48 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/23 18:17:40 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 		return ;
 	if ((*lst)->next != NULL)
 		ft_clear(&((*lst)->next), del);
-	ft_lstdelone((*lst), (*del));
+	ft_lstdelone((*lst), del);
 	free(lst);
 }
