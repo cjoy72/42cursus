@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:37:18 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/20 19:50:42 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/29 15:27:03 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@ int	ft_strcharcmp(char *set, char c)
 	return (0);
 }
 
+void	ft_strcpyy(char *str, char *ls, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		str[i] = ls[i];
+		i++;
+	}
+	str[i] = '\0';
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
@@ -50,7 +63,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (ft_strcharcmp(set, &s1[i]))
 		i++;
 	ls = (s1 + i);
-	size = ft_strlen(ls)
+	size = ft_strlen(ls);
 	i = size - 1;
 	while (ft_strcharcmp(set, &ls[i]) && i >= 0)
 		i--;
@@ -59,12 +72,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (str == NULL)
 		return (NULL);
 	size = i;
-	i = 0;
-	while (i < size)
-	{
-		str[i] = ls[i];
-		i++;
-	}
-	str[i] = '\0';
+	ft_strcpyy(str, ls, size);
 	return (str);
 }
