@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:22:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 16:31:50 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 16:55:53 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,17 @@ char	*ft_zero(void)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * 2);
-	if (str == NULL)
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
 		return (NULL);
-	else
-	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
 }
 
 void	ft_putintchar(char *str, int num, int length)
 {
+	if (num >= 0)
+		num = num * (-1);
 	str[length] = '\0';
 	length--;
 	while (num != 0)
@@ -57,13 +55,13 @@ void	ft_putintchar(char *str, int num, int length)
 char	*ft_allocmem_or_min(int length, int is_negative)
 {
 	char	*str;
-	char	*min_val = "-2147483648";
 
 	if (length == 11 && is_negative)
 	{
 		if (!(str = (char *)malloc(sizeof(char) * 12)))
 			return (NULL);
-		ft_strcpy(str, min_val);
+		ft_putintchar(str + 1, INT_MIN, 12);
+		str[0] = '-';
 		return (str);
 	}
 	if (!(str = (char *)malloc(sizeof(char) * (length + 1 + is_negative))))
