@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:22:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 16:55:53 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 17:07:20 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char	*ft_zero(void)
 {
 	char	*str;
 
-	if (!(str = (char *)malloc(sizeof(char) * 2)))
+	str = (char *)malloc(sizeof(char) * 2);
+	if (str == NULL)
 		return (NULL);
 	str[0] = '0';
 	str[1] = '\0';
@@ -58,13 +59,15 @@ char	*ft_allocmem_or_min(int length, int is_negative)
 
 	if (length == 11 && is_negative)
 	{
-		if (!(str = (char *)malloc(sizeof(char) * 12)))
+		str = (char *)malloc(sizeof(char) * 12);
+		if (str == NULL)
 			return (NULL);
 		ft_putintchar(str + 1, INT_MIN, 12);
 		str[0] = '-';
 		return (str);
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (length + 1 + is_negative))))
+	str = (char *)malloc(sizeof(char) * (length + 1 + is_negative));
+	if (str == NULL)
 		return (NULL);
 	if (is_negative)
 		str[0] = '-';
