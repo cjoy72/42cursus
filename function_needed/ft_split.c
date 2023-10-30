@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split1.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:24 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/22 20:33:25 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 18:31:43 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
+
+char	**fill_matrix(int n_words, const char *s, char c, char **str_array);
+char	**free_everything(char **str_array, int j);
 
 char	**ft_split(const char *s, char c)
 {
@@ -19,7 +22,7 @@ char	**ft_split(const char *s, char c)
 	char	**str_array;
 
 	if (s == NULL || *s == '\0')
-		return (s);
+		return (NULL);
 	i = 0;
 	n_words = 0;
 	if (s[0] != c && s[0] != '\0')
@@ -32,7 +35,7 @@ char	**ft_split(const char *s, char c)
 			i++;
 		}
 	}
-	str_array = malloc(sizeof(char *) * (n_words + 1));
+	str_array = (char **)malloc(sizeof(char *) * (n_words + 1));
 	if (str_array == NULL)
 		return (NULL);
 	str_array[n_words] = NULL;
