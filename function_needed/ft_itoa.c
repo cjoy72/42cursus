@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:22:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/19 23:28:48 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 15:33:06 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 int	ft_intlen(int a)
 {
@@ -54,23 +54,13 @@ void	ft_putintchar(char *str, int num, int length)
 
 char	*ft_allocmem(int length, int is_negative)
 {
-	char	*str;
+	char		*str;
 
+	str = (char *)malloc(sizeof(char) * (length + 1 + is_negative));
+	if (str == NULL)
+		return (NULL);
 	if (is_negative)
-	{
-		length = length + 2;
-		str = (char *)malloc(sizeof(char) * length);
-		if (str == NULL)
-			return (NULL);
 		str[0] = '-';
-	}
-	else
-	{
-		length = length + 1;
-		str = (char *)malloc(sizeof(char) * length);
-		if (str == NULL)
-			return (NULL);
-	}
 	return (str);
 }
 
@@ -83,6 +73,8 @@ char	*ft_itoa(int a)
 	is_negative = 0;
 	if (a == 0)
 		return (ft_zero());
+	if (a == INT_MIN)
+		return (strdup("-2147483648"));
 	if (a < 0)
 	{
 		is_negative = 1;
