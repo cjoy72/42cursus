@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:22:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 16:19:21 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 16:31:50 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_intlen(int a)
 {
-	if (a == 0)
-		return (1);
 	int	i;
 
+	if (a == 0)
+		return (1);
 	i = 0;
 	while (a != 0)
 	{
@@ -57,31 +57,16 @@ void	ft_putintchar(char *str, int num, int length)
 char	*ft_allocmem_or_min(int length, int is_negative)
 {
 	char	*str;
+	char	*min_val = "-2147483648";
 
-	// Check if the requested string is for the smallest 32-bit integer
 	if (length == 11 && is_negative)
 	{
-		str = (char *)malloc(sizeof(char) * 12);
-		if (str == NULL)
+		if (!(str = (char *)malloc(sizeof(char) * 12)))
 			return (NULL);
-		str[0] = '-';
-		str[1] = '2';
-		str[2] = '1';
-		str[3] = '4';
-		str[4] = '7';
-		str[5] = '4';
-		str[6] = '8';
-		str[7] = '3';
-		str[8] = '6';
-		str[9] = '4';
-		str[10] = '8';
-		str[11] = '\0';
+		ft_strcpy(str, min_val);
 		return (str);
 	}
-
-	// Regular dynamic allocation for other lengths
-	str = (char *)malloc(sizeof(char) * (length + 1 + is_negative));
-	if (str == NULL)
+	if (!(str = (char *)malloc(sizeof(char) * (length + 1 + is_negative))))
 		return (NULL);
 	if (is_negative)
 		str[0] = '-';
