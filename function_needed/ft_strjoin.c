@@ -6,23 +6,13 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:48:34 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/19 14:22:45 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 19:00:39 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-int	ft_strlen(char *c)
-{
-	int	i;
-
-	i = 0;
-	while (c[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*str;
 	int		i;

@@ -6,14 +6,14 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:24 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 18:31:43 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/30 18:34:24 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**fill_matrix(int n_words, const char *s, char c, char **str_array);
-char	**free_everything(char **str_array, int j);
+static char	**fill_matrix(int n_words, const char *s, char c, char **str_array);
+static char	**free_everything(char **str_array, int j);
 
 char	**ft_split(const char *s, char c)
 {
