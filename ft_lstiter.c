@@ -6,17 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:50:50 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/31 15:46:36 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:52:18 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+#include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

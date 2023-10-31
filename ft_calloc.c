@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:28:47 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/18 15:40:37 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:44:55 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

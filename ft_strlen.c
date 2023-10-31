@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 21:16:58 by cjoy720           #+#    #+#             */
-/*   Updated: 2023/10/13 23:14:18 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:47:24 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

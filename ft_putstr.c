@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:20:38 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 18:09:27 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:46:58 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {

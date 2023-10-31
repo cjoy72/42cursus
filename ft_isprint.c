@@ -6,11 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 21:16:52 by cjoy720           #+#    #+#             */
-/*   Updated: 2023/10/13 23:08:39 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:45:51 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_isprint(int c)
 {
