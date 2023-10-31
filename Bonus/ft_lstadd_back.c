@@ -6,17 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:00:50 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/23 17:40:22 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:20:13 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	**next;
-}					t_list;
+#include "libft.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
