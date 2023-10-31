@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 21:11:16 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 17:53:20 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:25:23 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	while (*s != '\0')
-		write(fd, s++, 1);
-	write(1, "\n", 1);
+	{
+		write(fd, s, 1);
+		s++;
+	}
+	write(fd, "\n", 1);
 }

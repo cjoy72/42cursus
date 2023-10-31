@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 16:42:24 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 18:34:24 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:17:44 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,22 @@ char	**ft_split(const char *s, char c)
 	char	**str_array;
 
 	if (s == NULL || *s == '\0')
-		return (NULL);
-	i = 0;
+	{
+		str_array = ft_calloc(sizeof(char *), 1);
+		if (str_array == NULL)
+			return (NULL);
+		return (str_array);
+	}
+	i = -1;
 	n_words = 0;
 	if (s[0] != c && s[0] != '\0')
 		n_words++;
-	while (s[i + 1] != '\0')
+	while (s[++i + 1] != '\0')
 	{
 		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
-		{
 			n_words++;
-			i++;
-		}
 	}
-	str_array = (char **)malloc(sizeof(char *) * (n_words + 1));
+	str_array = malloc(sizeof(char *) * (n_words + 1));
 	if (str_array == NULL)
 		return (NULL);
 	str_array[n_words] = NULL;
@@ -44,35 +46,35 @@ char	**ft_split(const char *s, char c)
 
 static char	**fill_matrix(int n_words, const char *s, char c, char **str_array)
 {
-	int	j;
+	int	g;
 	int	i;
 	int	len;
 
-	j = -1;
+	g = -1;
 	i = 0;
 	len = 0;
-	while (++j < n_words)
+	while (++g < n_words)
 	{
 		while (*s == c)
 			s++;
 		while (s[len] != c && s[len] != '\0')
 			len++;
-		str_array[j] = malloc(sizeof(char) * (len + 1));
-		if (str_array[j] == NULL)
-			return (free_everything(str_array, j));
-		str_array[j][len++] = '\0';
+		str_array[g] = malloc(sizeof(char) * (len + 1));
+		if (str_array[g] == NULL)
+			return (free_everything(str_array, g));
+		str_array[g][len++] = '\0';
 		i = len - 1;
 		while (--len > 0)
-			str_array[j][len -1] = s[len - 1];
-		s = s + i;
+			str_array[g][len - 1] = s[len - 1];
+		s += i;
 	}
 	return (str_array);
 }
 
-static char	**free_everything(char **str_array, int j)
+static char	**free_everything(char **str_array, int g)
 {
-	while (--j >= 0)
-		free(str_array[j]);
+	while (--g >= 0)
+		free(str_array[g]);
 	free(str_array);
 	return (NULL);
 }

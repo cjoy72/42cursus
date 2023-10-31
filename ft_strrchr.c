@@ -6,24 +6,30 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 10:15:16 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 10:31:01 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 19:50:51 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-char	*strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int			i;
+	const char	*s_start;
 
-	i = 0;
-	while ((unsigned char)s[i] != '\0')
-		i++;
-	i--;
-	while ((unsigned char)s[i] != (unsigned char)c && i >= 0)
-		i--;
-	if (i == -1)
+	i = -1;
+	s_start = s;
+	while (s[++i])
+	{
+		if ((unsigned char)s[i] == (unsigned char)c)
+		{
+			s += i;
+			i = 0;
+		}
+	}
+	if ((unsigned char)c == '\0')
+		return ((char *)&s[i]);
+	if (s_start == s && (unsigned char)*s_start != (unsigned char)c)
 		return (NULL);
-	else
-		return ((char *)(s + i));
+	return ((char *)s);
 }

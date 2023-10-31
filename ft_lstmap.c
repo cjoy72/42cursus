@@ -6,25 +6,13 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 15:42:02 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/29 16:08:54 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:28:51 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-static void	init(t_list **nl, t_list **nh, t_list **lst, void *(*f)(void *))
-{
-	(*nl)->content = f((*lst)->content);
-	(*nl)->next = NULL;
-	*nh = *nl;
-	*lst = (*lst)->next;
-}
+static void	init(t_list **nl, t_list **nh, t_list **lst, void *(*f)(void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -33,7 +21,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 
 	if (lst == NULL)
 		return (NULL);
-	new_lst = (t_list *)malloc(sizeof(t_list));
+	new_lst = malloc(sizeof(t_list));
 	if (new_lst == NULL)
 		return (NULL);
 	init(&new_lst, &new_head, &lst, f);
@@ -51,4 +39,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		lst = lst->next;
 	}
 	return (new_head);
+}
+
+static void	init(t_list **nl, t_list **nh, t_list **lst, void *(*f)(void *))
+{
+	(*nl)->content = f((*lst)->content);
+	(*nl)->next = NULL;
+	*nh = *nl;
+	*lst = (*lst)->next;
 }

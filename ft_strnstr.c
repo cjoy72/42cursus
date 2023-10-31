@@ -6,36 +6,35 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 22:00:45 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 22:52:24 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:14:25 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned char	*c1;
-	unsigned char	*c2;
-	size_t			i;
-	size_t			j;
+	size_t	i;
+	size_t	n;
+	size_t	little_len;
 
-	c1 = (unsigned char *)big;
-	c2 = (unsigned char *)little;
-	if (c2[0] == '\0')
-		return ((char *)(big));
 	i = 0;
-	while (i < len)
+	n = 0;
+	little_len = ft_strlen(little);
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (i < len && big[i])
 	{
-		j = 0;
-		while (c1[i] != c2[i] && c1[i] != '\0')
-			i++;
-		while (c1[i + j] == c2[j] && c2[j] != '\0')
+		while (big[i + n] == little[n] && n + i < len)
 		{
-			if (c2[j] == '\0')
-				return ((char *)(c1 + i));
+			if (n >= little_len - 1)
+				return ((char *)&big[i]);
+			n++;
 		}
+		n = 0;
+		i++;
 	}
-	return (NULL);
+	return (0);
 }
 /*
 "ciao come stai"

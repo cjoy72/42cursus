@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 21:23:17 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 17:56:32 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 20:26:38 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long	nl;
+	long	n_long;
 	char	c;
 
-	nl = n;
-	if (n < 0)
+	n_long = n;
+	if (n_long < 0)
 	{
-		n = n * (-1);
-		write (fd, "-", 1);
+		n_long *= -1;
+		write(fd, "-", 1);
 	}
-	if (nl >= 10)
-		ft_putnbr_fd(nl / 10, fd);
-	c = (nl % 10) + '0';
-	write (fd, &c, 1);
+	if (n_long >= 10)
+		ft_putnbr_fd(n_long / 10, fd);
+	c = (n_long % 10) + 48;
+	write(fd, &c, 1);
 }
