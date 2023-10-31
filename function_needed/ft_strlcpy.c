@@ -6,21 +6,11 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:25:42 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/16 17:07:09 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 13:59:18 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 size_t	strlcpy(char *dst, const char *src, size_t size)
 {
