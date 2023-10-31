@@ -6,13 +6,13 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:07:46 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/30 17:45:43 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:59:47 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	*memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 	unsigned char	*d;

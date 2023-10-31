@@ -6,13 +6,13 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:50:46 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/14 00:59:50 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:58:40 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
 	char	*c;

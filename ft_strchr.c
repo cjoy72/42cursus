@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:55:53 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/17 10:11:46 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:53:45 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	while (s[i] != c && s[i] != '\0')
+	while (s[i] != c && s[i])
 		i++;
 	if (s[i] == '\0')
 		return (NULL);
