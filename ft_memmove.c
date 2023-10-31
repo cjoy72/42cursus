@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:58:29 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/31 20:54:51 by cbaroi           ###   ########.fr       */
+/*   Updated: 2023/10/31 22:19:38 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	char		*dest_ptr;
+	const char	*src_ptr;
+	size_t		i;
 
-	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (s < d && s + n > d)
+	dest_ptr = (char *)dest;
+	src_ptr = (const char *)src;
+	if (dest_ptr == src_ptr)
+		return (dest);
+	if (src_ptr < dest_ptr)
 	{
-		while (n > 0)
-		{
-			d[n - 1] = s[n - 1];
-			n--;
-		}
+		i = n + 1;
+		while (--i > 0)
+			dest_ptr[i - 1] = src_ptr[i - 1];
 	}
 	else
 	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		i = -1;
+		while (++i < n)
+			dest_ptr[i] = src_ptr[i];
 	}
 	return (dest);
 }
