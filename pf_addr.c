@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   pf_addr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 17:43:10 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/31 14:33:42 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/12/01 12:04:28 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/12/01 12:07:46 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstdelone(t_list *lst, void (*del) (void *))
+void	pf_addr(void *ptr, size_t *count)
 {
-	del(lst->content);
-	free(lst);
+	unsigned long	ptr_addr;
+
+	if (ptr == NULL)
+		pf_putstr("(nill)", count);
+	else
+	{
+		ptr_addr = (unsigned long)ptr;
+		pf_putstr("0x", count);
+		pf_cnvts(ptr_addr, 16, count);
+	}
 }

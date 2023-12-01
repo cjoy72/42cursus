@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   pf_cnvtB.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 11:07:32 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/31 14:27:00 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/12/01 12:25:35 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/12/01 12:33:49 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	pf_cnvtb(long n, int base, size_t *count)
 {
-	if (lst == NULL)
-		return ;
-	if (new != NULL)
+	char	*symbol;
+
+	symbol = "0123456789ABCDEF";
+	if (n < 0)
 	{
-		new->next = *lst;
-		(*lst) = new;
+		pf_putchar('-', count);
+		pf_cnvtb(-n, base, count);
 	}
+	if (n >= base)
+	{
+		pf_cnvtb(n / base, base, count);
+		n = n % base;
+	}
+	pf_putchar(symbol[n], count);
 }

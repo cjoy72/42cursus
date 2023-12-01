@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   pf_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 21:16:52 by cjoy720           #+#    #+#             */
-/*   Updated: 2023/10/31 20:45:51 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/12/01 12:16:12 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/12/01 12:20:16 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isprint(int c)
+void	pf_putnbr(int nbr, size_t *count)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	else
-		return (0);
+	long	n;
+
+	n = nbr;
+	if (n < 0)
+	{
+		pf_putchar('-', count);
+		n = -n;
+	}
+	while (n >= 10)
+	{
+		pf_putnbr(n / 10, count);
+		n = n % 10;
+	}
+	pf_putchar((n + '0'), count);
 }

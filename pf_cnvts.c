@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   pf_cnvtS.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 13:32:05 by cbaroi            #+#    #+#             */
-/*   Updated: 2023/10/31 20:52:35 by cbaroi           ###   ########.fr       */
+/*   Created: 2023/12/01 12:08:11 by cbaroi            #+#    #+#             */
+/*   Updated: 2023/12/01 12:37:30 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	pf_cnvts(long n, int base, size_t *count)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	char	*symbol;
+
+	symbol = "0123456789abcdef";
+	if (n < 0)
+	{
+		pf_putchar('-', count);
+		pf_cnvts(-n, base, count);
+	}
+	if (n >= base)
+	{
+		pf_cnvts(n / base, base, count);
+		n = n % base;
+	}
+	pf_putchar(symbol[n], count);
 }
