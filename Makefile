@@ -32,14 +32,13 @@ $(MLX_DIR):
 $(NAME): $(OBJS)
 	cc -o $(NAME) -Wall -Wextra -Werror -g $(OBJS) $(FLAGS)
 	rm -rf $(OBJS)
-	rrm -rf $(MLX_DIR)
+	rm -rf $(MLX_DIR)
 
 clean:
 	rm -rf $(MLX_DIR)
 	rm -rf $(OBJS)
 
-fclean:
+fclean: clean
 	rm -f $(NAME)
-	rm -rf $(MLX_DIR)
 	
 re: fclean all
