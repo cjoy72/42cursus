@@ -6,7 +6,7 @@
 /*   By: cbaroi <cbaroi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 13:19:01 by cbaroi            #+#    #+#             */
-/*   Updated: 2024/04/30 13:24:13 by cbaroi           ###   ########.fr       */
+/*   Updated: 2024/04/30 13:57:03 by cbaroi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	move_left(t_game *game)
 {
+	game->moves++;
 	if (game->map.map[game->player_pos.i][game->player_pos.j - 1] == '1')
 		update_image(game, XK_A);
 	if (game->map.map[game->player_pos.i][game->player_pos.j - 1] == 'E')
 	{
 		if (game->collectables == 0)
 		{
-			printf("You won!\n");
+			printf("You won!\nWith only %d moves\n", game->moves);
 			destroy_everything(game);
 		}
 		else
@@ -37,18 +38,19 @@ void	move_left(t_game *game)
 		load_images(game);
 		update_image(game, XK_A);
 	}
-	printf("collectable remaining %d\n", game->collectables);
+	printf("Game moves: %d\n", game->moves);
 }
 
 void	move_right(t_game *game)
 {
+	game->moves++;
 	if (game->map.map[game->player_pos.i][game->player_pos.j + 1] == '1')
 		update_image(game, XK_D);
 	if (game->map.map[game->player_pos.i][game->player_pos.j + 1] == 'E')
 	{
 		if (game->collectables == 0)
 		{
-			printf("You won!\n");
+			printf("You won!\nWith only %d moves\n", game->moves);
 			destroy_everything(game);
 		}
 		else
@@ -65,18 +67,19 @@ void	move_right(t_game *game)
 		load_images(game);
 		update_image(game, XK_D);
 	}
-	printf("collectable remaining %d\n", game->collectables);
+	printf("Game moves: %d\n", game->moves);
 }
 
 void	move_up(t_game *game)
 {
+	game->moves++;
 	if (game->map.map[game->player_pos.i - 1][game->player_pos.j] == '1')
 		update_image(game, XK_W);
 	if (game->map.map[game->player_pos.i - 1][game->player_pos.j] == 'E')
 	{
 		if (game->collectables == 0)
 		{
-			printf("You won!\n");
+			printf("You won!\nWith only %d moves\n", game->moves);
 			destroy_everything(game);
 		}
 		else
@@ -93,18 +96,19 @@ void	move_up(t_game *game)
 		load_images(game);
 		update_image(game, XK_W);
 	}
-	printf("collectable remaining %d\n", game->collectables);
+	printf("Game moves: %d\n", game->moves);
 }
 
 void	move_down(t_game *game)
 {
+	game->moves++;
 	if (game->map.map[game->player_pos.i + 1][game->player_pos.j] == '1')
 		update_image(game, XK_S);
 	if (game->map.map[game->player_pos.i + 1][game->player_pos.j] == 'E')
 	{
 		if (game->collectables == 0)
 		{
-			printf("You won!\n");
+			printf("You won!\nWith only %d moves\n", game->moves);
 			destroy_everything(game);
 		}
 		else
@@ -121,7 +125,7 @@ void	move_down(t_game *game)
 		load_images(game);
 		update_image(game, XK_S);
 	}
-	printf("collectable remaining %d\n", game->collectables);
+	printf("Game moves: %d\n", game->moves);
 }
 
 
